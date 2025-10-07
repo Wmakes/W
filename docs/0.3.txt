@@ -1,0 +1,56 @@
+# ==============================
+# W LANGUAGE V0.3 - CHEATSHEET
+# ==============================
+
+IMPORTANT: Version 0.3 syntax is TRANSITIONAL between 0.2 and 0.4!
+
+1. SHOW – display
+show "text"           # text in double quotes
+show 'variable/array' # content of variable or array
+
+2. INT – integers
+int 42 "name"         # NOTE: name in DOUBLE QUOTES!
+
+3. ARRAY – arrays
+array 1,2,3 "name"    # NOTE: name in DOUBLE QUOTES!
+
+4. MATH OPERATIONS
+3+2="result"          # NOTE: variable name in DOUBLE QUOTES!
+
+5. IF / ELSE
+if int "x" > 3 show "large" else show "small"
+# NOTE: variable name in DOUBLE QUOTES!
+
+6. REDO – repetition
+redo 5 show "repeat 5 times"
+
+7. ARRAYS
+leng "array"         # NOTE: name in DOUBLE QUOTES!
+push "array" 99      # NOTE: name in DOUBLE QUOTES!
+pop "array"          # NOTE: name in DOUBLE QUOTES!
+
+8. FUNCTIONS
+func "name"           # function name in DOUBLE QUOTES
+  # function body
+done
+call "name"           # function name in DOUBLE QUOTES
+
+9. INPUT
+input "Text:" = "variable"  # NOTE: variable in DOUBLE QUOTES!
+
+10. TIME
+time                  # Unix time
+date                  # YYYY-MM-DD
+datetime              # date and time
+sleep 2               # pause 2 seconds
+
+11. RANDOM
+random 1 100 = "variable"  # NOTE: variable in DOUBLE QUOTES!
+
+12. PROGRAM END
+END
+
+13. COMMENTS
+# This is a comment
+
+KEY INFO: Version 0.3 uses DOUBLE QUOTES for ALL variable/array/function names!
