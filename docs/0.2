@@ -1,0 +1,49 @@
+# ==============================
+# W LANGUAGE V0.2 - CHEATSHEET
+# ==============================
+
+IMPORTANT: Specific syntax for version 0.2!
+
+1. SHOW – display
+show "text"           # text in double quotes
+show 'variable/array' # content of variable or array
+
+2. INT – integers
+int 42 "name"         # NOTE: name in DOUBLE QUOTES!
+
+3. ARRAY – arrays
+array 1,2,3 "name"    # NOTE: name in DOUBLE QUOTES!
+
+4. MATH OPERATIONS
+3+2="result"          # NOTE: variable name in DOUBLE QUOTES!
+
+5. IF / ELSE
+if int "x" = 3 show 'x' else show "other"
+# NOTE: variable name in DOUBLE QUOTES, display in SINGLE QUOTES
+
+6. REDO – repetition
+redo 5 show "repeat 5 times"
+
+7. ARRAYS
+leng "array"         # NOTE: name in DOUBLE QUOTES!
+push "array" 99      # NOTE: name in DOUBLE QUOTES!
+pop "array"          # NOTE: name in DOUBLE QUOTES!
+
+8. FUNCTIONS
+func "name"           # function name in DOUBLE QUOTES
+  # function body
+done
+call "name"           # function name in DOUBLE QUOTES
+
+9. INPUT
+input "Text:" = 'variable'  # NOTE: variable in SINGLE QUOTES!
+
+10. PROGRAM END
+END
+
+11. COMMENTS
+# This is a comment
+
+KEY DIFFERENCE:
+- All variable/array/function names use DOUBLE QUOTES!
+- Only SHOW and INPUT use single quotes for variable names!
