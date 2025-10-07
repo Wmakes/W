@@ -1,0 +1,62 @@
+# ==============================
+# W LANGUAGE V0.5 - CHEATSHEET
+# ==============================
+
+IMPORTANT: Version 0.5 introduces Var class and specific syntax!
+
+1. SHOW – display
+show "text"           # text in double quotes
+show 'variable/array' # content of variable/array in SINGLE QUOTES
+
+2. INT – integers
+int 42 'name'         # NOTE: name in SINGLE QUOTES!
+
+3. ARRAY – arrays
+array 1,2,3 'name'    # NOTE: name in SINGLE QUOTES!
+
+4. MATH OPERATIONS
+3+2='result'          # NOTE: variable name in SINGLE QUOTES!
+
+5. IF / ELSE
+if int 'x' > 3 show "large" else show "small"
+# NOTE: variable name in SINGLE QUOTES!
+
+6. REDO – repetition
+redo 5 show "repeat 5 times"
+
+7. ARRAYS
+leng 'array'         # NOTE: name in SINGLE QUOTES!
+push 'array' 99      # NOTE: name in SINGLE QUOTES!
+pop 'array'          # NOTE: name in SINGLE QUOTES!
+
+8. FUNCTIONS
+func "name"           # NOTE: function name in DOUBLE QUOTES!
+  # function body
+done
+call "name"           # NOTE: function name in DOUBLE QUOTES!
+
+9. INPUT
+input "Text:" = 'variable'  # NOTE: variable in SINGLE QUOTES!
+
+10. TIME
+time                  # Unix time
+date                  # YYYY-MM-DD
+datetime              # date and time
+sleep 2               # pause 2 seconds
+
+11. RANDOM
+random 1 100 = 'variable'  # NOTE: variable in SINGLE QUOTES!
+
+12. FILES
+write "text" "file.txt"  # BOTH parameters in DOUBLE QUOTES!
+read "file.txt" 'variable' # file in double quotes, variable in single quote!
+
+13. MULTIPLE COMMANDS - DO NOT WORK PROPERLY IN 0.5
+
+14. PROGRAM END
+END
+
+SUMMARY OF 0.5 SYNTAX:
+- Most commands use SINGLE QUOTES for variables/arrays
+- FUNC, CALL, WRITE, READ still use DOUBLE QUOTES
+- Introduced Var class for type management
