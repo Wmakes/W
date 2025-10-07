@@ -1,0 +1,70 @@
+# ==============================
+# W LANGUAGE V0.7.0 - CHEATSHEET
+# ==============================
+
+1. SHOW – display
+show "text"           # text in double quotes
+show 'variable/array' # content of variable or array
+
+2. INT – integers
+int 42 'myNumber'
+int -5 'negative'     # supports negative numbers
+
+3. ARRAY – arrays
+array 1,2,3 'myArray'
+
+4. MATH OPERATIONS
+3+2='sum'             # basic operations + - * /
+# Floating-point division
+
+5. IF / ELSE
+if 'x' > 3 show "large" else show "small"
+# No need for 'int' in condition
+
+6. REDO – repetition
+redo 5 show "repeat 5 times"
+
+7. ARRAYS
+leng 'array'         # array length
+push 'array' 99      # add element
+pop 'array'          # remove and show last element
+
+8. FUNCTIONS
+func 'name'
+  # function body
+done
+call 'name'
+
+9. INPUT
+input "Enter value:" = 'variable'
+
+10. TIME
+time                  # Unix time
+date                  # YYYY-MM-DD
+datetime              # date and time
+sleep 2               # pause 2 seconds
+
+11. RANDOM
+random 1 100 = 'variable'
+
+12. FILES
+write "text" "file.txt"  # write to file
+read "file.txt" 'variable' # read from file
+
+13. INLINE COMMANDS
+int 5 'a'; show 'a'; int 10 'b'; show 'b'
+
+14. USER INTERFACE
+# Available modes: REPL, GUI file picker, manual path
+
+15. LEXER/PARSER
+# New architecture - tokenization and parsing
+
+16. ERRORS
+# Improved error messages
+
+17. PROGRAM END
+END
+
+18. COMMENTS
+# This is a comment
