@@ -1,1 +1,37 @@
+# ==============================
+# W LANGUAGE V0.1 - CHEATSHEET
+# ==============================
 
+IMPORTANT: Syntax differs from later versions!
+
+1. SHOW – display
+show "text"           # text in double quotes
+show 'variable/array' # content of variable or array
+
+2. INT – integers
+int 42 "name"         # NOTE: name in DOUBLE QUOTES, not single quotes!
+
+3. ARRAY – arrays
+array 1,2,3 "name"    # NOTE: name in DOUBLE QUOTES!
+
+4. MATH OPERATIONS
+3+2="result"          # variable name in DOUBLE QUOTES
+
+5. IF / ELSE
+if int "x" = 3 show 'x' else break
+# Syntax: if int "name" operator value action else action
+# NOTE: variable name in DOUBLE QUOTES, display in SINGLE QUOTES
+
+6. REDO – repetition
+redo 5 show "repeat 5 times"
+
+7. PROGRAM END
+END
+
+8. COMMENTS
+# This is a comment
+
+9. ERRORS
+Errors show a general problem description
+
+NOTE: Version 0.1 has a fixed file path in the code.
