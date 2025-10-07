@@ -1,0 +1,106 @@
+# ==============================
+# W LANGUAGE V0.8 - CHEATSHEET
+# ==============================
+
+1. SHOW – display
+show "text"           # Displays text in double quotes
+show 'variable/array' # Displays content of variable or array
+
+2. INT – integers
+int 42 'myNumber'
+int -5 'negative'     # Supports negative numbers
+
+3. BOOL – boolean variables
+bool true 'isOK'
+bool false 'notOK'
+if 'isOK' && 'notOK' = false show "Logic works"
+if not 'isOK' show "Not works"
+
+Logical operators: && (and), || (or), not (negation). Error if invalid value used, e.g.:
+bool 42 'x'  # Error: Expected 'true' or 'false'
+
+4. ARRAY – number arrays
+array 1,2,3 'myArray'
+array -1,-2,3 'negativeArray'  # Arrays with negatives
+leng 'myArray'        # Displays length
+push 'myArray' 99     # Adds element
+pop 'myArray'         # Removes and displays last element
+
+5. ARRAY_STR – string arrays
+array_str "ala","ma","kota" 'words'
+show 'words'          # Displays ['ala', 'ma', 'kota']
+leng 'words'          # Displays length
+push 'words' "psa"    # Adds string
+pop 'words'           # Removes and displays last string
+
+Note: Array name must be in single quotes (e.g. 'words'), elements in double or single quotes. Error if array name invalid, e.g.:
+array_str "ala","ma" "kota"  # Error: Last argument must be name in single quotes
+
+6. GET – access array elements
+get 'myArray' 1 = 'result'  # Gets element at index 1 into variable
+get 'words' 1               # Displays element at index 1
+
+Note: Index must be valid (non-negative and less than length), otherwise error:
+get 'words' 999  # Error: Invalid index
+get 'words' -1   # Error: Invalid index
+
+7. INPUT
+input "Display text:" = 'variable'
+
+8. IF / ELSE / LOGICAL
+if 'myNumber' > 5 show "large" else show "small"
+if 'isOK' && 'notOK' = false show "Logic works"
+if not 'notOK' show "Not works"  # Condition with not
+
+Note: not requires a boolean variable, otherwise error:
+if not 42 show "Error"        # Error: Operator not requires boolean value
+if not 'undefined' show "Error" # Error: No variable
+
+9. WHILE – dynamic loops
+The while loop executes code block while condition is true. The only supported loop in v0.8.
+int 0 'counter'
+while 'counter' < 5
+  show 'counter'
+  'counter' + 1 ='counter'
+done
+
+Output: 0, 1, 2, 3, 4
+
+10. FUNCTIONS
+func 'function_name'
+  show "Hello"
+done  # Nothing after done, not even a comment
+call 'function_name'
+
+11. TIME
+time       # Seconds since epoch
+date       # YYYY-MM-DD
+datetime   # YYYY-MM-DD HH:MM:SS
+sleep 2    # Pause in seconds
+
+12. RANDOM
+random 1 10 = 'variable'
+random -5 5 = 'negativeRandom'  # Supports negative range
+
+13. FILES
+write "text" "file.txt"
+read "file.txt" 'variable'
+
+14. INLINE COMMANDS
+int 5 'a'; int 10 'b'; show 'a'; show 'b'
+
+15. ERRORS
+Interpreter displays error messages for invalid syntax or runtime errors (e.g., undefined variable, invalid index) and continues processing next lines. Example errors:
+[ERROR] Line 76: No array: none
+[ERROR] Line 77: Invalid index: 999
+[ERROR] Line 78: Invalid index: -1
+[ERROR] Line 79: Expected 'true' or 'false', got 42
+[ERROR] Line 80: No variable: undefined
+[ERROR] Line 81: Operator not requires boolean value
+[ERROR] Line X: Command 'redo' is unsupported in version 0.8, use 'while'
+
+16. COMMENTS
+# This is a comment
+
+17. PROGRAM END
+END
