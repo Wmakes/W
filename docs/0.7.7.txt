@@ -1,0 +1,88 @@
+# ==============================
+# W LANGUAGE V0.7.7 - CHEATSHEET
+# ==============================
+
+1. SHOW – display
+show "text"           # text in double quotes
+show 'variable/array' # content of variable or array
+
+2. INT – integers
+int 42 'myNumber'
+int -5 'negative'     # supports negative numbers
+
+3. ARRAY – arrays
+array 1,2,3 'myArray'
+array -1,-2,3 'negativeArray'  # arrays with negatives
+leng 'myArray'        # length
+push 'myArray' 99     # add element
+pop 'myArray'         # remove last element
+
+4. MATH OPERATIONS
+3+2='sum'
+20/5='quotient'
+-3 + 2 = 'negativeResult'  # operations with negatives
++ - * / follow standard precedence
+Variables are auto-recognized:
+x=10; y=2; z=x*y
+Supports complex expressions: 'x'+5='result'
+
+5. IF / ELSE
+if 'myNumber' = 42 show "OK" else show "FAIL"
+if 'x'+5 > 10 show "large" # complex conditions
+if 'negative' < 0 show "negative OK"  # conditions with negatives
+
+6. WHILE – dynamic loops
+
+The while loop in W executes a block of code while the condition is true. In version 0.8, the loop is more flexible and replaces the deprecated redo command.
+
+Syntax:
+while 'counter' < 5
+show 'counter'
+'counter' + 1 ='counter'
+done
+Output:
+0
+1
+2
+3
+4
+
+7. REDO – DEPRECATED
+redo 3 show "repeat 3 times" # [DEPRECATION] use while
+# Migrate to while for new programs
+
+8. FUNCTIONS
+func 'function_name'
+show "Hello"
+done # nothing after done, not even a hashtag
+call 'function_name'
+
+9. INPUT
+input "Display text:" = 'variable'
+
+10. TIME
+time       # seconds since epoch
+date       # YYYY-MM-DD
+datetime   # YYYY-MM-DD HH:MM:SS
+sleep 2    # pause in seconds
+
+11. RANDOM
+random 1 10 = 'variable'
+random -5 5 = 'negativeRandom'  # random with negative range
+
+12. FILES
+write "text" "file.txt"
+read "file.txt" 'variable'
+
+13. INLINE COMMANDS
+int 5 'a'; int 10 'b'; show 'a'; show 'b'
+
+14. ERRORS
+Errors show line number, e.g.:
+[ERROR] Line 5: No variable: x
+
+15. COMMENTS
+# This is a comment
+
+16. PROGRAM END
+END
