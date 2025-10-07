@@ -13,3 +13,5 @@ Control: if, while, redo, functions
 Utils: Input, random, time/date, sleep, file read/write
 
 Star ⭐ and join the vision: Code simple, code free!
+NOTE: This repo archives old versions and their docs but DONT use them always pick the newest version 
+CURENT NEWEST VERSION 0.8
