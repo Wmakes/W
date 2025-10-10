@@ -143,9 +143,9 @@ class IfNode:
         self.else_ = else_
 
 class FuncNode:
-    def __init__(self, name):
+    def __init__(self, name, body):
         self.name = name
-        self.body = []
+        self.body = body
 
 class CallNode:
     def __init__(self, name):
@@ -331,8 +331,9 @@ class Parser:
 
     def parse_func(self):
         self.eat("ID")  # eat 'func'
-        name = self.parse_expr()
-        return FuncNode(name)
+        name = self.eat("ID").value
+        body = self.parse_till_done()
+        return FuncNode(name, body)
 
     def parse_call(self):
         self.eat("ID")  # eat 'call'
@@ -342,7 +343,7 @@ class Parser:
     def parse_while(self):
         self.eat("ID")  # eat 'while'
         cond = self.parse_expr()
-        body = []  # body will be added later in run_file
+        body = self.parse_till_done()
         return WhileNode(cond, body)
 
     def parse_write(self):
@@ -423,6 +424,13 @@ class Parser:
             nodes.append(self.parse_line())
             if self.current() and self.current().type == "SEMICOLON":
                 self.eat("SEMICOLON")
+        return nodes
+
+    def parse_till_done(self):
+        nodes = []
+        while self.current() and self.current().value != 'done':
+            nodes.append(self.parse_line())
+        self.eat('ID')
         return nodes
 
 # ---------------------------
@@ -566,15 +574,15 @@ def run_node(node):
     elif isinstance(node, CallNode):
         name = run_node(node.name)
         if name in functions:
-            for line in functions[name]:
-                run_line(line, 0)  # line number 0 for functions
+            for sub_node in functions[name]:
+                run_node(sub_node)
         else:
             raise NameError(f"No function: {name}")
     elif isinstance(node, WhileNode):
         while run_node(node.cond):
-            #for body_line in node.body:
-            #    run_line(body_line, 0)  # line number 0 for loop body
-            run_lines(node.body)
+            for sub_node in node.body:
+                run_node(sub_node)
+            
     elif isinstance(node, WriteNode):
         text = run_node(node.text)
         filename = run_node(node.filename)
@@ -589,54 +597,25 @@ def run_node(node):
         seconds = run_node(node.seconds)
         time.sleep(seconds)
 
-def run_line(line, line_number=0):
-    if line.startswith("#") or line.strip() == "":
-        return
-    if line == "done":
-        return
-    try:
-        tokens = tokenize(line)
-        parser = Parser(tokens)
-        nodes = parser.parse()
-        for node in nodes:
-            run_node(node)
-    except Exception as e:
-        print(f"[ERROR] Line {line_number}: {e}")
 
 def run_file(filename):
     with open(filename, "r") as f:
         lines = f.readlines()
-    run_lines(lines)
 
-def run_lines(lines):
-    i = 0
-    while i < len(lines):
-        line = lines[i].strip()
-        if line.startswith("func "):
-            tokens = tokenize(line)
-            parser = Parser(tokens)
-            func = parser.parse_func()
-            body = []
-            i += 1
-            while i < len(lines) and lines[i].strip() != "done":
-                body.append(lines[i].strip())
-                i += 1
-            func.body = body
-            run_node(func)
-        elif line.startswith("while "):
-            tokens = tokenize(line)
-            parser = Parser(tokens)
-            while_node = parser.parse_while()
-            body = []
-            i += 1
-            while i < len(lines) and lines[i].strip() != "done":
-                body.append(lines[i].strip())
-                i += 1
-            while_node.body = body
-            run_node(while_node)
-        else:
-            run_line(line, i+1)
-        i += 1
+    tokens = []
+    for line in lines:
+        if line.startswith("#") or line.strip() == "":
+            continue
+        tokens += tokenize(line)
+
+    #try:
+    nodes = Parser(tokens).parse()
+    for node in nodes:
+        run_node(node)
+
+    #except Exception as e:
+    #    print(f"[ERROR]: {e}")
+
 
 # ---------------------------
 # GUI / MANUAL
@@ -686,14 +665,12 @@ if __name__ == "__main__":
         print("3 – Enter path to file manually")
         choice = input("Choice: ").strip()
         if choice == "1":
-            line_number = 1
             while True:
                 try:
                     line = input(">>> ")
                     if line.lower() == "exit":
                         break
-                    run_line(line, line_number)
-                    line_number += 1
+                    #run_line(line) #!TODO
                 except KeyboardInterrupt:
                     print("\n[REPL] interrupted")
         elif choice == "2":
