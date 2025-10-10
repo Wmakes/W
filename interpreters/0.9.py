@@ -190,7 +190,8 @@ class Parser:
 
     def parse_expr(self):
         left = self.parse_term()
-        while self.current() and self.current().type == "OP" and self.current().value in ("+", "-", "&&", "||"):
+        while self.current() and self.current().type == "OP" and \
+                self.current().value in ("+", "-", "&&", "||", "<", ">"):
             op = self.eat("OP").value
             right = self.parse_term()
             left = BinOp(left, op, right)
@@ -227,8 +228,7 @@ class Parser:
         expr = self.parse_expr()
         if self.current() and self.current().type == "OP" and self.current().value == "=":
             self.eat("OP")
-            name_tok = self.eat("STRING") if self.current().type == "STRING" else self.eat("ID")
-            name = name_tok.value
+            name = self.eat("VAR").value.strip("'")
             return Assign(name, expr)
         return expr
 
@@ -236,7 +236,7 @@ class Parser:
         self.eat("ID")  # eat 'bool'
         value_tok = self.eat("TRUE") if self.current().type == "TRUE" else self.eat("FALSE")
         value = value_tok.value
-        name = self.parse_expr()
+        name = self.eat("VAR").value.strip("'")
         return BoolAssign(name, value)
 
     def parse_show(self):
@@ -247,7 +247,7 @@ class Parser:
     def parse_int(self):
         self.eat("ID")  # eat 'int'
         value = self.parse_expr()
-        name = self.parse_expr()
+        name = self.eat("VAR").value.strip("'")
         return Assign(name, value)
 
     def parse_array(self):
@@ -440,7 +440,6 @@ def run_node(node):
     elif isinstance(node, BoolNode):
         return node.value
     elif isinstance(node, Var):
-        print(variables)
         if node.name in variables:
             return variables[node.name]
         elif node.name in arrays:
@@ -484,7 +483,6 @@ def run_node(node):
     elif isinstance(node, Assign):
         value = run_node(node.expr)
         variables[node.name] = value
-        print("ASSIGN")
     elif isinstance(node, BoolAssign):
         value = run_node(node.value)
         variables[node.name] = value
