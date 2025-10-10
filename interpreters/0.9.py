@@ -236,7 +236,7 @@ class Parser:
     def parse_bool(self):
         self.eat("ID")  # eat 'bool'
         value_tok = self.eat("TRUE") if self.current().type == "TRUE" else self.eat("FALSE")
-        value = value_tok.value
+        value = bool(value_tok.value)
         name = self.eat("VAR").value.strip("'")
         return BoolAssign(name, value)
 
@@ -485,8 +485,7 @@ def run_node(node):
         value = run_node(node.expr)
         variables[node.name] = value
     elif isinstance(node, BoolAssign):
-        value = run_node(node.value)
-        variables[node.name] = value
+        variables[node.name] = node.value
     elif isinstance(node, Show):
         value = run_node(node.expr)
         print(value)
