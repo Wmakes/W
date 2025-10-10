@@ -496,7 +496,12 @@ def run_node(node):
         variables[node.name] = node.value
     elif isinstance(node, Show):
         value = run_node(node.expr)
-        print(value)
+        if type(value) is int:
+            print(value)
+        elif value == "\\n":
+            print()
+        else:
+            print(value, end = "")
     elif isinstance(node, Array):
         values = [run_node(v) for v in node.values]
         arrays[node.name] = values
