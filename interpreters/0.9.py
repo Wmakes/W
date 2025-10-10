@@ -8,6 +8,7 @@ from datetime import datetime
 from tkinter import filedialog, Tk
 
 TMP_DIR = tempfile.gettempdir()
+print(f"[INFO] Temp Dir: {TMP_DIR}")
 DEBUG = False
 
 # ---------------------------
@@ -572,8 +573,9 @@ def run_node(node):
             raise NameError(f"No function: {name}")
     elif isinstance(node, WhileNode):
         while run_node(node.cond):
-            for body_line in node.body:
-                run_line(body_line, 0)  # line number 0 for loop body
+            #for body_line in node.body:
+            #    run_line(body_line, 0)  # line number 0 for loop body
+            run_lines(node.body)
     elif isinstance(node, WriteNode):
         text = run_node(node.text)
         filename = run_node(node.filename)
@@ -605,6 +607,9 @@ def run_line(line, line_number=0):
 def run_file(filename):
     with open(filename, "r") as f:
         lines = f.readlines()
+    run_lines(lines)
+
+def run_lines(lines):
     i = 0
     while i < len(lines):
         line = lines[i].strip()
