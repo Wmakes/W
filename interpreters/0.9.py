@@ -192,7 +192,7 @@ class Parser:
     def parse_expr(self):
         left = self.parse_term()
         while self.current() and self.current().type == "OP" and \
-                self.current().value in ("+", "-", "&&", "||", "<", ">"):
+                self.current().value in ("+", "-", "&&", "||", "<", ">", "=="):
             op = self.eat("OP").value
             right = self.parse_term()
             left = BinOp(left, op, right)
@@ -472,7 +472,7 @@ def run_node(node):
             return left > right
         elif node.op == "<":
             return left < right
-        elif node.op == "=":
+        elif node.op == "==":
             return left == right
         elif node.op == "&&":
             if not isinstance(left, bool) or not isinstance(right, bool):
