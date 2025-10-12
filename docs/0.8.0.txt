@@ -1,5 +1,5 @@
 # ==============================
-# W LANGUAGE V0.8 - CHEATSHEET
+# W LANGUAGE V0.8.0 - CHEATSHEET
 # ==============================
 
 1. SHOW – display
