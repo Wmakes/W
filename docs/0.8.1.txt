@@ -1,0 +1,113 @@
+W LANGUAGE V0.8.1 - CHEATSHEET
+1. SHOW – display
+show "text"           # Displays text in quotes
+show 'variable/array' # Displays the content of a variable or array
+
+2. INT – integers
+int 42 'myNumber'
+int -5 'negative'     # Supports negative numbers
+
+3. BOOL – logical variables
+bool true 'isOK'
+bool false 'notOK'
+if 'isOK' and 'notOK' = false show "Logic works"
+if not 'isOK' show "Not works"
+
+Logical operators: and (and), or (or), not (negation). Error if invalid value used, e.g.:
+bool 42 'x'  # Error: Expected 'true' or 'false'
+
+4. ARRAY – number arrays
+array 1,2,3 'myArray'
+array -1,-2,3 'negativeArray'  # Arrays with negatives
+leng 'myArray'      # Displays length
+push 'myArray' 99   # Adds an element
+pop 'myArray'       # Removes and displays the last element
+
+5. ARRAY_STR – string arrays
+array_str "ala","has","cat" 'words'
+show 'words'            # Displays ['ala', 'has', 'cat']
+leng 'words'            # Displays length
+push 'words' "dog"      # Adds a string
+pop 'words'             # Removes and displays the last string
+
+Note: The array name must be in single quotes (e.g., 'words'), and elements in double or single quotes. Error if array name is invalid, e.g.:
+array_str "ala","has" "cat"  # Error: Last argument must be a name in single quotes
+
+6. GET – access to array elements
+get 'myArray' 1 = 'result'  # Retrieves element at index 1 to variable
+get 'words' 1               # Displays element at index 1
+
+Note: Index must be valid (non-negative and less than array length), otherwise error:
+get 'words' 999  # Error: Invalid index
+get 'notExist' 0 # Error: No such array
+
+7. MATHEMATICAL OPERATIONS
+3+2='sum'
+20/5='quotient'
+-3 + 2 = 'negativeResult'  # Operations with negatives
+
+Operators: +, -, *, / in standard order. Variables automatically recognized:
+x=10; y=2; z=x*y
+'x'+5='result'           # Complex expressions
+
+8. IF / ELSE
+if 'myNumber' = 42 show "OK" else show "FAIL"
+if 'x'+5 > 10 show "large"
+if 'negative' < 0 show "negative OK"
+if 'isOK' and 'notOK' = false show "Logic works"
+if not 'notOK' show "Not works"  # Condition with not
+
+Note: not requires a logical variable, otherwise error:
+if not 42 show "Error"        # Error: Operator not requires a logical value
+if not 'undefined' show "Error" # Error: No such variable
+
+9. WHILE – dynamic loops
+The while loop executes a code block as long as the condition is true. The only supported loop in v0.8.
+int 0 'counter'
+while 'counter' < 5
+  show 'counter'
+  'counter' + 1 ='counter'
+done
+
+Result: 0, 1, 2, 3, 4
+10. FUNCTIONS
+func 'function_name'
+  show "Hello"
+done  # After done NOTHING can be present, not even a comment
+call 'function_name'
+
+11. INPUT
+input "Text to display:" = 'variable'
+
+12. TIME
+time       # Seconds since epoch
+date       # YYYY-MM-DD
+datetime   # YYYY-MM-DD HH:MM:SS
+sleep 2    # Pause in seconds
+
+13. RANDOM
+random 1 10 = 'variable'
+random -5 5 = 'negativeRandom'  # Supports negative range
+
+14. FILES
+write "text" "file.txt"
+read "file.txt" 'variable'
+
+15. INLINE COMMANDS
+int 5 'a'; int 10 'b'; show 'a'; show 'b'
+
+16. ERRORS
+The interpreter displays error messages for invalid syntax or runtime errors (e.g., non-existent variable, invalid index) and continues processing subsequent lines of the program. Example errors:
+[ERROR] Line 76: No such array: notExist
+[ERROR] Line 77: Invalid index: 999
+[ERROR] Line 78: Invalid index: -1
+[ERROR] Line 79: Expected 'true' or 'false', got 42
+[ERROR] Line 80: No such variable: undefined
+[ERROR] Line 81: Operator not requires a logical value
+[ERROR] Line X: Command 'redo' is not supported in version 0.8, use 'while'
+
+17. COMMENTS
+# This is a comment
+
+18. PROGRAM END
+END
