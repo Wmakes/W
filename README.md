@@ -16,4 +16,4 @@ Perfect for beginners learning to code and devs building quick scripts.
 
 Star ⭐ and join the vision: Code simple, code free!
 NOTE: This repo archives old versions and their docs but DONT use them always pick the newest version 
-CURENT NEWEST VERSION 0.8
+CURENT NEWEST VERSION 0.8.1
