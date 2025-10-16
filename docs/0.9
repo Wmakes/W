@@ -1,0 +1,104 @@
+# W Language v0.9 - Cheatsheet
+
+New in v0.9: Variable and array names no longer require quotes (e.g., `int myNumber 42`). Syntax for `int`: `int name value`. Improved string handling in `show` and negative numbers in `int`. Backward compatibility preserved.
+
+## 1. SHOW – Display
+`show "text"`          # Displays text in quotes
+`show myVariable`      # Displays variable or array content
+
+## 2. INT – Integers
+`int myNumber 42`
+`int negative -5`      # Supports negative numbers
+
+## 3. BOOL – Booleans
+`bool isOK true`
+`bool notOK false`     # Defaults to false if no value
+`if isOK and notOK = false show "Logic works"`
+`if not isOK show "Not works"`
+
+Logical operators: `and` (AND), `or` (OR), `not` (NOT). Error if invalid value (e.g., `bool x 42` – expects 'true' or 'false').
+
+## 4. ARRAY – Numeric Arrays
+`array "1,2,3" myArray`
+`array "-1,-2,3" negativeArray` # Arrays with negatives
+`leng myArray`         # Displays length
+`push myArray -99`     # Adds element (negative supported)
+`pop myArray`          # Removes and displays last element
+
+## 5. ARRAY_STR – String Arrays
+`array_str "ala","ma","kota" words`
+`show words`           # Displays ['ala', 'ma', 'kota']
+`leng words`           # Displays length
+`push words "psa"`     # Adds string
+`pop words`            # Removes and displays last string
+
+Note: Values in quotes, name without. Error on invalid name.
+
+## 6. GET – Array Access
+`get myArray 1 = result` # Gets index 1 into variable
+`get words 1`            # Displays index 1
+
+Note: Index must be valid (non-negative, < length), else error.
+
+## 7. MATH OPERATIONS
+`3+2=sum`
+`20/5=quotient`
+`-3 + 2 = negativeResult` # Operations with negatives
+
+Operators: `+`, `-`, `*`, `/` in standard precedence. Variables auto-detected:
+`int x 10; int y 2; z=x*y`
+`x+5=result`           # Compound expressions
+
+## 8. IF / ELSE
+`if myNumber = "42" show "OK" else show "FAIL"`
+`if x+5 > 10 show "large"`
+`if negative < "0" show "negative OK"`
+`if isOK and notOK = false show "Logic works"`
+`if not notOK show "Not works"` # Condition with not
+
+Note: `not` requires boolean, else error.
+
+## 9. WHILE – Dynamic Loops
+While executes block until condition is false.
+`int counter 0`
+`while counter < "5"`
+  `show counter`
+  `counter + 1 = counter`
+`done`
+
+Output: 0, 1, 2, 3, 4
+
+## 10. FUNCTIONS
+`func myFunction`
+  `show "Hello"`
+`done`
+`call myFunction`
+
+## 11. INPUT
+`input "Enter text:" = variable`
+
+## 12. TIME
+`time`       # Seconds since epoch
+`date`       # YYYY-MM-DD
+`datetime`   # YYYY-MM-DD HH:MM:SS
+`sleep 2`    # Pause in seconds
+
+## 13. RANDOM
+`random 1 10 = variable`
+`random -5 5 = negativeRand` # Supports negative range
+
+## 14. FILES
+`write "text" "file.txt"`
+`read "file.txt" = variable`
+
+## 15. INLINE COMMANDS
+`int a 5; int b 10; show a; show b`
+
+## 16. ERRORS
+Interpreter shows error messages for syntax/runtime issues and continues to next lines.
+
+## 17. COMMENTS
+`# This is a comment`
+
+## 18. PROGRAM END
+`END` 
