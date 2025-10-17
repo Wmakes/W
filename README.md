@@ -49,7 +49,7 @@
   python 0.9.py 
   ```
 
-**Note**: This repo archives old versions (0.1 to 0.8.1). Always pick the newest version (0.9) – don't use outdated ones!
+**Note**: This repo archives old versions (0.1 to 0.9.0). Always pick the newest version (0.9.1) – don't use outdated ones!
 
 
 
@@ -65,7 +65,7 @@
 
 
 ## Documentation
-- Syntax examples and features in the repo's version files (e.g., check `0.9.py` for lexer/AST details).
+- Syntax examples and features in the repo's version files (e.g., check `0.9.1.py` for lexer/AST details).
 - Work in progress – contribute to docs!
 
 
