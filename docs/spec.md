@@ -115,9 +115,12 @@ Integer in [start, end] (negatives OK).
 Syntax:  
 `write "text" "file.txt"` (to temp dir)  
 `read "file.txt" = var`  
-
+### Clear's 
+`clear` clears the var's 
+`clear-output` clears the output in the terminal 
 ### End: `END`
 Stops program execution.  
+
 
 ## Semantics and Rules
 - **Evaluation**: Left-to-right, with op precedence.
