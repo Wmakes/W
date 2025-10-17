@@ -1,4 +1,4 @@
-show "Hello W 0.9"        # 1 - Version update
+show "Hello W 0.9.1"        # 1 - Version update
 int negative -5           # 2 - Test negative number
 show negative             # 3 - Display negative
 int  myNumber 42           # 4
@@ -66,6 +66,15 @@ show words             # 65 - Should display ['alex', 'has', 'cat']
 get words "1" = result  # 66 - Get 'has'
 show result             # 67 - Should display 'has'
 get myArray "1" = result2  # 68 - Get -2
-show result2           # 69 - Should display -2
-END                     # 70
-show result2           # 71
+show result2         # 69 - Should display -2
+int x 0              # 70
+int y 1              # 71
+func while-test      # 72
+while x < 2          # 73
+x + y = x            # 74
+show x               # 75
+done                 # 76
+done                 # 77
+call while-test      # 78
+END                  # 79
+show result2         # 80
