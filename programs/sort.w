@@ -1,7 +1,7 @@
 
 #modified selection sort
 
-int n 5
+int n 5 # how many numbers are in the array
 array "3,4,1,2,5" nums
 show nums
 
