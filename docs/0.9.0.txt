@@ -1,6 +1,6 @@
-# W Language v0.9 - Cheatsheet
+# W Language v0.9.0 - Cheatsheet
 
-New in v0.9: Variable and array names no longer require quotes (e.g., `int myNumber 42`). Syntax for `int`: `int name value`. Improved string handling in `show` and negative numbers in `int`. Backward compatibility preserved.
+New in v0.9.0: Variable and array names no longer require quotes (e.g., `int myNumber 42`). Syntax for `int`: `int name value`. Improved string handling in `show` and negative numbers in `int`. Backward compatibility preserved.
 
 ## 1. SHOW – Display
 `show "text"`          # Displays text in quotes
