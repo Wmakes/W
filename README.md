@@ -94,7 +94,3 @@
 Star ⭐ and join the vision: Code simple, code free!
 
 
-License
-
-GPL-3.0
-Star ⭐ and join the vision: Code simple, code free!
