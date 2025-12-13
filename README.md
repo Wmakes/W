@@ -45,10 +45,10 @@
   git clone https://github.com/Wicin-134/W
   cd W
   ```
-* **Run the interpreter** (current version: 0.8.1):
+* **Run the interpreter** (current version: 0.9.1):
 
   ```bash
-  python 0.9.py
+  python 0.9.1.py
   ```
 
 ### Windows
@@ -63,7 +63,7 @@
 * **Run**:
 
   ```bash
-  python 0.9.py
+  python 0.9.1.py
   ```
 
 **Note**: This repo archives old versions (0.1 to 0.9.0). Always pick the newest version (0.9.1) – don't use outdated ones!
