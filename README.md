@@ -10,14 +10,8 @@
 
 **W is an open source interpreted programming language that is easy to develop in – lightweight and educational, built in Python for quick scripting and learning.**
 
-> Code intuitively with simple commands like `show "Hello World"` or `while x > 0`. From basics to loops and file I/O, W keeps it simple without the fluff.
+> Code intuitively with simple commands like `show "Hello World"` or `while x > 0`. From basics to loops and file I/O.
 
-## Why W?
-
-* **Simple Syntax**: Write `int anwser 42` or `func myfunc` – no fluff, just logic.
-* **Powerful Features**: Variables, arrays, loops, functions, file I/O, random, and more.
-* **Evolved Design**: From v0.1 string parsing to v0.8 with lexer, AST, runner.
-* **Open Source**: Licensed under GPL-3.0 – fork, modify, but keep it open and credit W!
 
 ## Features
 
@@ -33,12 +27,6 @@
 * **Install dependencies**:
 
   * Python 3.10+ (`sudo pacman -S python` or `sudo apt install python3`)
-  * **Tkinter** (required for GUI components):
-
-    ```bash
-    sudo apt install python3-tk      # Ubuntu/Debian
-    sudo pacman -S tk                # Arch
-    ```
 * **Clone the repository**:
 
   ```bash
@@ -56,7 +44,6 @@
 * **Install Python**:
 
   * Download Python 3.10+ from [python.org](https://www.python.org/downloads/).
-  * Make sure to select **`tkinter`** during installation (usually included by default).
 * **Download W**:
 
   * Clone or download from [GitHub](https://github.com/Wicin-134/W).
@@ -71,17 +58,6 @@
 ### Required Software
 
 * [Python 3.10+](https://www.python.org/downloads/)
-* **Tkinter** (must be installed in system Python)
-
-### Development Environment Recommendations
-
-* Recommended Code Editors:
-
-  * PyCharm
-  * Notepad ++
-  * Vim
-  * Sublime Text
-
 ## Documentation
 
 * Syntax examples and features in the repo's version files (e.g., check `0.9.1.py` for lexer/AST details).
@@ -91,6 +67,5 @@
 
 [GPL-3.0](LICENSE)
 
-Star ⭐ and join the vision: Code simple, code free!
 
 

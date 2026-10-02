@@ -5,7 +5,6 @@ import time
 import re
 import sys
 from datetime import datetime
-from tkinter import filedialog, Tk
 
 TMP_DIR = tempfile.gettempdir()
 DEBUG = False  # Turn on if you need  detailed internal debugging prints
@@ -1041,29 +1040,6 @@ def run_file(filename):
             line_number += 1
 
 
-def pick_program_file_gui():
-    try:
-        root = Tk()
-        root.withdraw()
-        root.lift()
-        root.attributes("-topmost", True)
-        chosen = filedialog.askopenfilename(title="W – choose .w file",
-                                            filetypes=[("W scripts", "*.w"), ("All files", "*.*")])
-        root.destroy()
-        if chosen and os.path.isfile(chosen):
-            return chosen
-    except Exception:
-        pass
-    return None
-
-
-def pick_program_file_manual():
-    chosen = input("Enter path to .w file: ").strip()
-    if os.path.isfile(chosen):
-        return chosen
-    return None
-
-
 # ---------------------------
 # CHANGELOG / Documentation strings
 # ---------------------------
@@ -1104,35 +1080,15 @@ if __name__ == "__main__":
         else:
             print(f"[ERROR] File not found: {PROGRAM_FILE}")
     else:
-        print("Choose mode:")
-        print("1 - REPL (interactive)")
-        print("2 - GUI / choose a .w file")
-        print("3 - Enter file path manually")
-        choice = input("Choice: ").strip()
-        if choice == "1":
-            line_number = 1
-            while True:
-                try:
-                    line = input(">>> ")
-                    if line.lower() == "exit":
-                        break
-                    run_line(line, line_number)
-                    line_number += 1
-                except KeyboardInterrupt:
-                    print("\n[REPL] interrupted")
-        elif choice == "2":
-            PROGRAM_FILE = pick_program_file_gui()
-            if PROGRAM_FILE:
-                print(f"[INFO] Selected file: {PROGRAM_FILE}")
-                run_file(PROGRAM_FILE)
-            else:
-                print("No file selected.")
-        elif choice == "3":
-            PROGRAM_FILE = pick_program_file_manual()
-            if PROGRAM_FILE:
-                print(f"[INFO] Selected file: {PROGRAM_FILE}")
-                run_file(PROGRAM_FILE)
-            else:
-                print("Invalid path.")
-        else:
-            print("Unknown choice. Exiting.")
+        line_number = 1
+        while True:
+            try:
+                line = input(">>> ")
+                if line.lower() == "exit":
+                    break
+                run_line(line, line_number)
+                line_number += 1
+            except KeyboardInterrupt:
+                print("\n[REPL] interrupted")
+            except EOFError:
+                break
